@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clue 6</title>
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Monaco, monospace;
+  }
+  #audio {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+  .keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+  }
+  .key {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 70px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    font-size: 1.5em;
+    cursor: pointer;
+  }
+  .key:last-child {
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
+  }
+  #display {
+    width: 150px;
+    height: 50px;
+    background-color: #ccc;
+    border: 1px solid #999;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+  }
+  .keypad-buttons {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+</style>
+</head>
+<body>
+
+<audio id="audio" controls>
+  <source src="clue-6-hint.mp3" type="audio/mp3">
+  Your browser does not support the audio element.
+</audio>
+
+<div id="display"></div>
+
+<div class="keypad">
+  <div class="key" onclick="appendToDisplay(1)">1</div>
+  <div class="key" onclick="appendToDisplay(2)">2</div>
+  <div class="key" onclick="appendToDisplay(3)">3</div>
+  <div class="key" onclick="appendToDisplay(4)">4</div>
+  <div class="key" onclick="appendToDisplay(5)">5</div>
+  <div class="key" onclick="appendToDisplay(6)">6</div>
+  <div class="key" onclick="appendToDisplay(7)">7</div>
+  <div class="key" onclick="appendToDisplay(8)">8</div>
+  <div class="key" onclick="appendToDisplay(9)">9</div>
+  <div class="key" onclick="appendToDisplay(0)">0</div>
+</div>
+
+<div class="keypad-buttons">
+  <div class="key" onclick="clearDisplay()">Clear</div>
+  <div class="key" onclick="checkCode()">Enter</div>
+</div>
+
+<audio id="beepSound" src="beep1.mp3"></audio>
+
+<script>
+  var code = '';
+  var display = document.getElementById('display');
+  var beepSound = document.getElementById('beepSound');
+
+  function appendToDisplay(number) {
+    if (code.length < 4) {
+      code += number;
+      display.textContent = code;
+      beepSound.play();
+    }
+  }
+
+  function clearDisplay() {
+    code = '';
+    display.textContent = '';
+  }
+
+  function checkCode() {
+    if (code === '7019') {
+      window.location.href = 'https://ivanproduce.github.io/lmxzfshjer8o/';
+    } else {
+      window.close();
+    }
+  }
+</script>
+
+</body>
+</html>
